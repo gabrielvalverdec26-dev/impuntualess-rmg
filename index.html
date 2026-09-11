@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IMPUNTUALESS RNG</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Fondo de partículas -->
+  <canvas id="bg-particles"></canvas>
+
+  <div class="container">
+    
+    <!-- Encabezado con Login -->
+    <header>
+      <h1>IMPUNTUALESS RNG</h1>
+      <div class="user-status">
+        <div class="user-info">
+          <span class="user-icon">👤</span>
+          <span class="username" id="username-display">Cargando...</span>
+        </div>
+        <div class="coins-info">
+          <span class="coin-icon">🪙</span>
+          <span id="coin-count">1,250</span>
+          <button id="btn-daily-claim" title="Recompensa Diaria">🎁</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navegación por pestañas (Sin Amigos) -->
+    <nav class="nav-tabs">
+      <button class="nav-tab active" data-tab="tiradas">🎲 Tiradas</button>
+      <button class="nav-tab" data-tab="album">📖 Álbum</button>
+      <button class="nav-tab" data-tab="tienda">🛒 Tienda</button>
+      <button class="nav-tab" data-tab="ranking">🏆 Ranking</button>
+      <button class="nav-tab" data-tab="ajustes">⚙️</button>
+    </nav>
+
+    <!-- Pestaña: Tiradas -->
+    <div id="tab-tiradas" class="tab-content active">
+      <div class="pity-container">
+        <div class="pity-item">
+          <div class="pity-header">
+            <span>🔮 Pity Épico</span>
+            <span><strong id="pity-epic-curr">1</strong> / 35</span>
+          </div>
+          <div class="pity-bar-bg">
+            <div id="pity-epic-bar" class="pity-bar-fill"></div>
+          </div>
+        </div>
+
+        <div class="pity-item">
+          <div class="pity-header">
+            <span>👑 Pity Legendario</span>
+            <span><strong id="pity-leg-curr">1</strong> / 90</span>
+          </div>
+          <div class="pity-bar-bg">
+            <div id="pity-leg-bar" class="pity-bar-fill"></div>
+          </div>
+        </div>
+      </div>
+
+      <div id="main-card" class="cyber-card rarity-poco-comun">
+        <div id="is-new-badge" style="display: none; position: absolute; top: 10px; right: 10px; background: #ef4444; color: white; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; font-weight: bold; animation: blink 1s infinite;">¡NUEVO!</div>
+        <div id="reward-badge" style="display: none; position: absolute; top: 10px; left: 10px; background: #eab308; color: black; padding: 2px 8px; border-radius: 10px; font-size: 0.8rem; font-weight: bold;">+50 🪙</div>
+        <div id="sticker-avatar">🎮</div>
+        <div id="sticker-rarity" class="rarity-badge">Poco Común</div>
+        <div id="sticker-name">Haz tu primera tirada</div>
+      </div>
+
+      <div class="actions">
+        <button id="btn-roll-1" class="btn-action btn-secondary">🎲 TIRAR ×1 Gratis</button>
+        <button id="btn-roll-10" class="btn-action btn-primary">📦 TIRAR ×10 🪙 500</button>
+      </div>
+    </div>
+
+    <!-- Pestaña: Álbum -->
+    <div id="tab-album" class="tab-content">
+      <h2>📖 Álbum de Colección</h2>
+      <div id="album-grid" class="album-grid"></div>
+    </div>
+
+    <!-- Pestaña: Tienda -->
+    <div id="tab-tienda" class="tab-content">
+      <h2>🛒 Tienda RNG</h2>
+      <div class="shop-list">
+        <div class="shop-item">
+          <div>
+            <strong>⚡ Subidón de Pity</strong>
+            <p>Aumenta +5 al pity de Épico</p>
+          </div>
+          <button class="btn-buy" onclick="buyPityBoost()">🪙 300</button>
+        </div>
+        <div class="shop-item">
+          <div>
+            <strong>👑 Amuleto Legendario</strong>
+            <p>Aumenta +5 al pity Legendario</p>
+          </div>
+          <button class="btn-buy" onclick="buyLegBoost()">🪙 800</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pestaña: Ranking -->
+    <div id="tab-ranking" class="tab-content">
+      <h2>🏆 Tabla de Clasificación</h2>
+      <ol id="leaderboard-list" class="ranking-list"></ol>
+    </div>
+
+    <!-- Pestaña: Ajustes -->
+    <div id="tab-ajustes" class="tab-content">
+      <h2>⚙️ Ajustes</h2>
+      <div class="setting-item" style="flex-direction: column; align-items: flex-start; gap: 8px;">
+        <span>Cambiar Nombre de Usuario</span>
+        <div style="display: flex; gap: 8px; width: 100%;">
+          <input type="text" id="input-new-name" placeholder="Escribe tu nuevo nombre..." maxlength="15" style="flex: 1; padding: 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(0,0,0,0.3); color: white;">
+          <button id="btn-save-name" style="background: #00f0ff; color: black; border: none; padding: 8px 12px; border-radius: 6px; font-weight: bold; cursor: pointer;">Guardar</button>
+        </div>
+      </div>
+      <div class="setting-item">
+        <span>Efectos de sonido</span>
+        <button id="btn-toggle-sound">🔊 Sonido: ON</button>
+      </div>
+      <div class="setting-item">
+        <span>Música Punk</span>
+        <button id="btn-toggle-music">🎵 Música: OFF</button>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Reproductor de audio con pista alegre enlazada -->
+  <audio id="bg-music" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c386616a.mp3?filename=upbeat-party-109040.mp3" loop preload="auto"></audio>
+
+  <script src="app.js"></script>
+</body>
+</html>
