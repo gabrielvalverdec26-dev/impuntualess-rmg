@@ -25,7 +25,7 @@ for (let i = 1; i <= 72; i++) {
     rarity: RARITIES[rarityIndex].id,
     label: RARITIES[rarityIndex].label,
     reward: RARITIES[rarityIndex].reward,
-    image: `imagenes/foto${i}.webp`
+    image: `stickers/foto${i}.webp`
   });
 }
 
