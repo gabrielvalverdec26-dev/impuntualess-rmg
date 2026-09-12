@@ -25,7 +25,7 @@ for (let i = 1; i <= 72; i++) {
     rarity: RARITIES[rarityIndex].id,
     label: RARITIES[rarityIndex].label,
     reward: RARITIES[rarityIndex].reward,
-    image: `/stickers/foto${i}.webp` // Corregido con la barra diagonal inicial y carpeta correcta
+    image: `/imagenes/foto${i}.webp` // Corregido con la barra diagonal inicial y carpeta correcta
   });
 }
 
@@ -265,7 +265,7 @@ function performRoll() {
 
   // FOTO GRANDE (140px) EN LAS TIRADAS (Uso correcto de randomItem.image)
   if (randomItem.image) {
-    stickerAvatar.innerHTML = `<img src="${randomItem.image}" style="width: 140px; height: 140px; object-fit: cover; border-radius: 12px; box-shadow: 0 0 15px rgba(0,240,255,0.4);">`;
+    <div id="sticker-avatar"></div>
   } else {
     stickerAvatar.textContent = "🎮";
   }
