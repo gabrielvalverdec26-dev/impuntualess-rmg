@@ -6,25 +6,26 @@ function generarStickers() {
   const lista = [];
   let id = 1;
 
-  // 1. Comunes (35)
+  // 1. Comunes (35) - Ajustado a tus nombres de imagen reales
   for (let i = 1; i <= 35; i++) {
     const amigo = nombresAmigos[i % nombresAmigos.length];
     lista.push({
       id: id++,
       nombre: `${amigo} #${i}`,
       rareza: "comun",
-      imagen: `/stickers/sticker_${i}.png`
+      imagen: `/imagenes/foto${i}.webp`
     });
   }
 
   // 2. Poco Común (20)
   for (let i = 1; i <= 20; i++) {
     const amigo = nombresAmigos[(i + 2) % nombresAmigos.length];
+    indiceFoto = i + 35;
     lista.push({
       id: id++,
       nombre: `${amigo} Gamer #${i}`,
       rareza: "poco_comun",
-      imagen: `/stickers/sticker_${i + 35}.png`
+      imagen: `/imagenes/foto${i + 35}.webp`
     });
   }
 
@@ -35,25 +36,25 @@ function generarStickers() {
       id: id++,
       nombre: `${amigo} Riendo #${i}`,
       rareza: "raro",
-      imagen: `/stickers/sticker_${i + 55}.png`
+      imagen: `/imagenes/foto${i + 55}.webp`
     });
   }
 
   // 4. Épicos (4)
   const epicos = ["Santi Modo Furia", "María Tryhard", "David Sin Dormir", "Carlos AFK"];
-  epicos.forEach((nom) => {
-    lista.push({ id: id++, nombre: nom, rareza: "epico", imagen: `/stickers/epico_${id}.png` });
+  epicos.forEach((nom, index) => {
+    lista.push({ id: id++, nombre: nom, rareza: "epico", imagen: `/imagenes/epico_${index + 1}.webp` });
   });
 
   // 5. Legendarios (2)
-  lista.push({ id: id++, nombre: "Alex El Elegante", rareza: "legendario", imagen: "/stickers/alex_legendario.png" });
-  lista.push({ id: id++, nombre: "Juan Rey del Delay", rareza: "legendario", imagen: "/stickers/juan_legendario.png" });
+  lista.push({ id: id++, nombre: "Alex El Elegante", rareza: "legendario", imagen: "/imagenes/alex_legendario.webp" });
+  lista.push({ id: id++, nombre: "Juan Rey del Delay", rareza: "legendario", imagen: "/imagenes/juan_legendario.webp" });
 
   // 6. Mítico (1)
-  lista.push({ id: id++, nombre: "El Grupo Completo", rareza: "mitico", imagen: "/stickers/grupo_mitico.png" });
+  lista.push({ id: id++, nombre: "El Grupo Completo", rareza: "mitico", imagen: "/imagenes/grupo_mitico.webp" });
 
   // 7. Secreto (1)
-  lista.push({ id: id++, nombre: "🔥 El Meme Prohibido 🔥", rareza: "secreto", imagen: "/stickers/meme_secreto.png" });
+  lista.push({ id: id++, nombre: "🔥 El Meme Prohibido 🔥", rareza: "secreto", imagen: "/imagenes/meme_secreto.webp" });
 
   return lista;
 }
