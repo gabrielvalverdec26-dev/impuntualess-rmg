@@ -266,7 +266,8 @@ function performRoll() {
 
   // FOTO GRANDE (140px) EN LAS TIRADAS
   if (randomItem.image) {
-    stickerAvatar.innerHTML = `<img src="${randomItem.image}" style="width: 140px; height: 140px; object-fit: cover; border-radius: 12px; box-shadow: 0 0 15px rgba(0,240,255,0.4);">`;
+   // Ejemplo correcto con la carpeta imagenes:
+image: `/imagenes/foto${i}.webp`
   } else {
     stickerAvatar.textContent = "🎮";
   }
