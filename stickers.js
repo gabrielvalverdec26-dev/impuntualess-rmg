@@ -6,7 +6,7 @@ function generarStickers() {
   const lista = [];
   let id = 1;
 
-  // 1. Comunes (35) - Ajustado a tus nombres de imagen reales
+  // 1. Comunes (35)
   for (let i = 1; i <= 35; i++) {
     const amigo = nombresAmigos[i % nombresAmigos.length];
     lista.push({
@@ -20,23 +20,24 @@ function generarStickers() {
   // 2. Poco Común (20)
   for (let i = 1; i <= 20; i++) {
     const amigo = nombresAmigos[(i + 2) % nombresAmigos.length];
-    indiceFoto = i + 35;
+    const numFoto = i + 35;
     lista.push({
       id: id++,
       nombre: `${amigo} Gamer #${i}`,
       rareza: "poco_comun",
-      imagen: `/imagenes/foto${i + 35}.webp`
+      imagen: `/imagenes/foto${numFoto}.webp`
     });
   }
 
   // 3. Raros (10)
   for (let i = 1; i <= 10; i++) {
     const amigo = nombresAmigos[(i + 4) % nombresAmigos.length];
+    const numFoto = i + 55;
     lista.push({
       id: id++,
       nombre: `${amigo} Riendo #${i}`,
       rareza: "raro",
-      imagen: `/imagenes/foto${i + 55}.webp`
+      imagen: `/imagenes/foto${numFoto}.webp`
     });
   }
 
